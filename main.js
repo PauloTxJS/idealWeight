@@ -1,20 +1,21 @@
 (function() {
 
-    let button = document.querySelector('#button');
+    const button = document.querySelector('#button');
 
-    button.addEventListener('click', function(){
-        
-        let height = parseFloat(document.querySelector("#height").value);
-        let weight = document.querySelector("#weight").value;
-        let show = document.querySelector("#show");
-        let geral = document.querySelector("#geral");
-        let h1 = document.querySelector("#h1");
-        let imc = weight / ( height * height );
-        imc = imc.toFixed(1)
+    button.addEventListener('click', idealWeight);
+    
+    function idealWeight() {
+
+        const height = parseFloat(document.querySelector("#height").value);
+        const weight = document.querySelector("#weight").value;
+        const show = document.querySelector("#show");
+        const geral = document.querySelector("#geral");
+        const h1 = document.querySelector("#h1");
+        const imc = (weight / ( height * height )).toFixed(1);
             
         if (height && weight) {
 
-            let msg = `Altura = ${height}<br>Peso = ${weight}<br>IMC = ${imc}<br>`;
+            const msg = `Altura = ${height}<br>Peso = ${weight}<br>IMC = ${imc}<br>`;
 
             if ( imc < 18.5 ) {
 
@@ -38,6 +39,7 @@
                 show.innerHTML = `${msg} Você está com sobrepeso.`;
 
             } else if ( imc >= 30 && imc <= 34.99 ) {
+
                 h1.style.color = '#B22222';
                 show.style.color = '#B22222';
                 geral.style.background = '#B22222';
@@ -51,7 +53,7 @@
                 show.innerHTML = `${msg} Você está com obesidade grau II (SEVERA).`;
 
             } else {
-                
+
                 h1.style.color = 'black';
                 show.style.color = 'black';
                 geral.style.background = 'black';
@@ -65,6 +67,6 @@
 
         }
 
-    })
+    }
 
 })();
